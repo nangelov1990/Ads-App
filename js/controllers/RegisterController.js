@@ -8,6 +8,7 @@ app.controller('RegisterController',
 	function ($scope, $rootScope, $location, authService, townsService, notifyService) {
 
 		$rootScope.loc = '/register';
+		$scope.phonePattern = '/^[\-()\d]+$/';
 
 		$rootScope.pageTitle = 'Register';
 		$rootScope.showRightSidebar = false;
