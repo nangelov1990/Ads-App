@@ -39,21 +39,28 @@ app.factory('authService',
         };
 
         function getUserProfile () {
-            var userProfileResource = $resource(
-              baseServiceUrl + 'user/profile',
-              null,
-              {
-                  'getAll': {method:'GET'}
-              }
-            );
+            // var userProfileResource = $resource(
+            //   baseServiceUrl + 'user/profile',
+            //   null,
+            //   {
+            //       'getAll': {method:'GET'}
+            //   }
+            // );
 
-            function getUserProfile (params, success, error) {
-              return userProfileResource.getAll(params, success, error);
-            }
+            // function getUserProfile (params, success, error) {
+            //   return userProfileResource.getAll(params, success, error);
+            // }
 
-            return {
-              getUserProfile: getUserProfile
-            }
+            // return {
+            //   getUserProfile: getUserProfile
+            // }
+
+            var request = {
+                method: 'GET',
+                url: baseServiceUrl + 'user/profile'
+            };
+
+            $http(request).success(success).error(error);
         };
 
         function logout () {

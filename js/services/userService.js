@@ -25,6 +25,15 @@ app.factory('userService',
 			$http(request).success(success).error(error);
 		};
 
+		function deleteAd (adId) {
+			var request = {
+				method: 'DELETE',
+				url: baseServiceUrl + 'user/ads/' + adId
+			};
+
+			$http(request).success(success).error(error);
+		}
+
 		function deactivatedAd (argument) {
 			// body...
 		};
@@ -37,7 +46,8 @@ app.factory('userService',
 			createNewAd: createNewAd,
 			getUserAds: getUserAds,
 			deactivatedAd: deactivatedAd,
-			publishedAgainAd: publishedAgainAd
+			publishedAgainAd: publishedAgainAd,
+			deleteAd: deleteAd
 		}
 	}
 );

@@ -16,7 +16,7 @@ app.controller('UserEditProfileController',
 
 		$scope.loadUserProfile = function() {
 			authService.getUserProfile(
-	            null,
+	            $scope.userData,
 	            function success(data) {
 	            	$scope.user = data;
 	            },

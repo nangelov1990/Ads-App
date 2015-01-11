@@ -14,7 +14,7 @@ app.factory('adsService',
     function getAllAds (params, success, error) {
       return adsResource.getAll(params, success, error);
     }
-
+    
     return {
       getAds: getAllAds
     }
