@@ -1,0 +1,64 @@
+<img src="img/ajax-loader.gif" ng-hide="!!ads.ads" alt="">
+
+<div class="ads" ng-show="!!ads.ads">
+	<ul>
+	    <li ng-repeat="ad in ads.ads" class="box">
+	    	<div>
+		    	<div>
+		    		<h1>{{ad.title}}</h1>
+			        <div><strong>Date:</strong> {{ad.date | date:'dd-MMM-yyyy'}}</div>
+			        <div>
+			        	<strong>Text: {{ ad.text }}</strong>
+			        </div>
+			        <div>
+			        	<strong>Name: {{ ad.ownerName }}</strong>
+			        </div>
+			        <div>
+			        	<strong>Email: {{ ad.ownerEmail }}</strong>
+			        </div>
+			        <div>
+		        	<strong>Phone: {{ ad.ownerPhone }}</strong>
+			        </div>
+			        <div ng-if="loc == 'MyAds'">
+			        	<strong ng-if="loc == 'MyAds'">Status: {{ ad.status }}</strong>
+			        </div>
+		    	</div>
+		        <div class='ad-top-right'>
+		        	<strong>Image:</strong>
+		        	<div>
+			            <img ng-if='ad.imageDataUrl' class="ad-image" ng-src="{{ad.imageDataUrl}}" />
+			            <img ng-if='!ad.imageDataUrl' class="ad-image" src="/img/no_image.jpg" />
+			        </div>
+		        </div>
+		        <div ng-if="loc == 'MyAds'">
+		      		<button type="submit" class="btn btn-primary" ng-click='login(userData)'>Edit</button>
+		      		<button type="submit" class="btn btn-primary" ng-click='login(userData)'>Publish Again</button>
+		      		<button type="submit" class="btn btn-default" ng-click='login(userData)'>Deactivate</button>
+		      		<button type="submit" class="btn btn-default" ng-click='login(userData)'>Delete</button>
+		        	<!-- <a href="#/register"><button class="btn btn-default">Register</button></a>
+		        	<a href="#/register"><button class="btn btn-default">Register</button></a> -->
+	      		</div>
+	    	</div>
+	    </li>
+	</ul>
+	<pagination ng-if="loc == '/'"
+		total-items="ads.numItems"
+		ng-model="adsParams.startPage"
+  		items-per-page="adsParams.pageSize"
+  		max-size="9"
+  		boundary-links="true"
+  		ng-change="loadAds()">
+	</pagination>
+	<pagination ng-if="loc == 'MyAds'"
+		total-items="ads.numItems"
+		ng-model="adsParams.startPage"
+  		items-per-page="adsParams.pageSize"
+  		max-size="9"
+  		boundary-links="true"
+  		ng-change="loadUserAds()">
+	</pagination>
+</div>
+
+<div ng-if="ads.ads.length==0" class="box no-data">
+    No ads found.
+</div>

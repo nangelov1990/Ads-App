@@ -1,0 +1,35 @@
+<div class="box">
+  	<legend><h2>Navigation</h2></legend>
+  	<ul class="sidebar-menu">
+  	    <li ng-class="{'selected' : loc == '/'}" style="margin-bottom:0px"><a href="#/">Home</a></li>
+  	</ul>
+    <ul class="sidebar-menu" ng-if="authService.isNormalUser()">
+        <li ng-class="{'selected' : loc == 'MyAds'}"><a href="#/user/ads">My Ads</a></li>
+        <li ng-class="{'selected' : loc == 'PublishNewAd'}"><a href="#/user/ads/publish">Publish New Ad</a></li>
+        <li ng-class="{'selected' : loc == 'EditProfile'}"><a href="#/user/edit-profile">Edit Profile</a></li>
+    </ul>
+    <ul class="sidebar-menu" ng-if="authService.isAdmin()">
+        <li ng-class="{'selected' : loc == 'Ads'}"><a href="#/">Ads</a></li>
+        <li ng-class="{'selected' : loc == 'Users'}"><a href="#/">Users</a></li>
+        <li ng-class="{'selected' : loc == 'Categories'}"><a href="#/">Categories</a></li>
+        <li ng-class="{'selected' : loc == 'Towns'}"><a href="#/">Towns</a></li>
+    </ul>
+</div>
+<div class="box" ng-if="authService.isAnonymous()">
+    <legend><p>To publish new ad, please log in.</p></legend>
+    <ul class="sidebar-menu">
+        <li ng-class="{'selected' : loc == '/login'}"><a href="#/login">Login</a></li>
+        <li ng-class="{'selected' : loc == '/register'}"><a href="#/register">Register</a></li>
+    </ul>
+</div>
+<div class="box" ng-if="loc == 'MyAds'">
+    <legend ng-if="authService.isNormalUser()"><h2>My Ads</h2></legend>
+    <legend ng-if="authService.isAdmin()"><h2>Ads</h2></legend>
+    <ul class="sidebar-menu">
+        <li ng-class="{'selected' : stat == null}" ng-click="loadUserAds(null)"><a href="#/user/ads">All</a></li>
+        <li ng-class="{'selected' : stat == 2}" ng-click="loadUserAds(2)"><a href="#/user/ads">Published</a></li>
+        <li ng-class="{'selected' : stat == 1}" ng-click="loadUserAds(1)"><a href="#/user/ads">Waiting Approval</a></li>
+        <li ng-class="{'selected' : stat == 0}" ng-click="loadUserAds(0)"><a href="#/user/ads">Inactive</a></li>
+        <li ng-class="{'selected' : stat == 3}" ng-click="loadUserAds(3)"><a href="#/user/ads">Rejected</a></li>
+    </ul>
+</div>
