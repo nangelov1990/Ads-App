@@ -1,7 +1,6 @@
 body {
     font-family: Calibri, Arial, serif;
     background-color: #E2F0D9;
-    width: 1280px;
 }
 
 #app-header {
@@ -13,7 +12,10 @@ body {
     font-weight: bold;
     color: black;
     text-shadow: rgba(255, 255, 255, 0.5) 0.5px 0.5px 1px;
-    margin: 5px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 #app-header .user-area {
@@ -27,6 +29,13 @@ body {
     margin-right: 15px;
 }
 
+#app-content {
+    width: 90%;
+    max-width: 1280px;
+    margin: 50px auto;
+    z-index: 0;
+}
+
 #app-footer {
     clear: both;
     background-color: #A9D18E;
@@ -37,7 +46,14 @@ body {
     font-weight: normal;
     color: black;
     text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;
-    margin: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.right-sidebar {
+    margin-bottom: 40px;
 }
 
 ul.pagination {
@@ -77,6 +93,15 @@ ul.ads li {
     font-weight: bold;
     color: black;
     text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.spacer {
+    width: 5%;
 }
 
 ul.sidebar-menu {

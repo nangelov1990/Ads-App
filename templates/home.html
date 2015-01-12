@@ -3,7 +3,7 @@
 <div class="ads" ng-show="!!ads.ads">
 	<ul>
 	    <li ng-repeat="ad in ads.ads" class="box">
-	    	<div>
+	    	<div class="flex-container">
 		    	<div>
 		    		<h1>{{ad.title}}</h1>
 			        <div><strong>Date:</strong> {{ad.date | date:'dd-MMM-yyyy'}}</div>
@@ -23,6 +23,7 @@
 			        	<strong ng-if="loc == 'MyAds'">Status: {{ ad.status }}</strong>
 			        </div>
 		    	</div>
+		    	<div class="spacer"></div>
 		        <div class='ad-top-right'>
 		        	<strong>Image:</strong>
 		        	<div>
@@ -31,6 +32,7 @@
 			        </div>
 		        </div>
 		        <div ng-if="loc == 'MyAds'">
+		        	<div class="spacer"></div>
 		      		<button type="submit" class="btn btn-primary" ng-click='login(userData)'>Edit</button>
 		      		<button type="submit" class="btn btn-primary" ng-click='login(userData)'>Publish Again</button>
 		      		<button type="submit" class="btn btn-default" ng-click='login(userData)'>Deactivate</button>
