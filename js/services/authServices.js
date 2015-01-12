@@ -38,31 +38,6 @@ app.factory('authService',
                 }).error(error);
         };
 
-        function getUserProfile () {
-            // var userProfileResource = $resource(
-            //   baseServiceUrl + 'user/profile',
-            //   null,
-            //   {
-            //       'getAll': {method:'GET'}
-            //   }
-            // );
-
-            // function getUserProfile (params, success, error) {
-            //   return userProfileResource.getAll(params, success, error);
-            // }
-
-            // return {
-            //   getUserProfile: getUserProfile
-            // }
-
-            var request = {
-                method: 'GET',
-                url: baseServiceUrl + 'user/profile'
-            };
-
-            $http(request).success(success).error(error);
-        };
-
         function logout () {
             localStorage.removeItem(key);
         };
@@ -95,7 +70,7 @@ app.factory('authService',
 
         function getAuthHeaders () {
             var headers = {};
-            var currentUser = this.getCurrentUser();
+            var currentUser = getCurrentUser();
             if (currentUser) {
                 headers['Authorization'] = 'Bearer ' + currentUser.access_token;
             }
@@ -107,7 +82,6 @@ app.factory('authService',
             register: register,
             logout: logout,
             getCurrentUser: getCurrentUser,
-            getUserProfile: getUserProfile,
             isLoggedIn: isLoggedIn,
             isAnonymous: isAnonymous,
             isNormalUser: isNormalUser,

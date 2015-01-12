@@ -2,6 +2,16 @@
 
 app.factory('userService',
 	function ($http, baseServiceUrl, authService) {
+
+        function getUserProfile (success, error) {
+            var request = {
+                method: 'GET',
+                url: baseServiceUrl + 'user/profile',
+                headers: authService.getAuthHeaders()
+            };
+
+            $http(request).success(success).error(error);
+        };
 		
 		function createNewAd (adData, success, error) {
 			var request = {
@@ -43,6 +53,7 @@ app.factory('userService',
 		};
 
 		return {
+			getUserProfile: getUserProfile,
 			createNewAd: createNewAd,
 			getUserAds: getUserAds,
 			deactivatedAd: deactivatedAd,

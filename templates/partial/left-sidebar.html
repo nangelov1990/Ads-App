@@ -6,7 +6,7 @@
     <ul class="sidebar-menu" ng-if="authService.isNormalUser()">
         <li ng-class="{'selected' : loc == 'MyAds'}"><a href="#/user/ads">My Ads</a></li>
         <li ng-class="{'selected' : loc == 'PublishNewAd'}"><a href="#/user/ads/publish">Publish New Ad</a></li>
-        <li ng-class="{'selected' : loc == 'EditProfile'}"><a href="#/user/edit-profile">Edit Profile</a></li>
+        <li ng-class="{'selected' : loc == 'EditProfile'}"><a href="#/user/profile/edit">Edit Profile</a></li>
     </ul>
     <ul class="sidebar-menu" ng-if="authService.isAdmin()">
         <li ng-class="{'selected' : loc == 'Ads'}"><a href="#/">Ads</a></li>

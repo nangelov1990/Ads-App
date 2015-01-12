@@ -40,7 +40,7 @@ app.config(function ($routeProvider) {
 		controller: 'UserHomeController'
 	});
 
-	$routeProvider.when('/user/edit-profile', {
+	$routeProvider.when('/user/profile/edit', {
 		templateUrl: 'templates/user/profile/edit-profile.html',
 		controller: 'UserEditProfileController'
 	});
