@@ -14,6 +14,19 @@ app.controller('UserEditProfileController',
 
 		$scope.towns = townsService.getTowns();
 
+		$scope.editUserProfile = function (params) {
+			userService.editUserProfile(
+				params,
+				function success (data) {
+					notifyService.showInfo('Successfully edited user profile');
+					// $location.path('/user/edit-profile');
+				},
+				function error(err) {
+                    notifyService.showError("Cannot edit user profile", err);
+                }
+            );
+		};
+
 		$scope.loadUserProfile = function() {
 			userService.getUserProfile(
 	            function success(data) {

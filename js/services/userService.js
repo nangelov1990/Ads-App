@@ -12,6 +12,19 @@ app.factory('userService',
 
             $http(request).success(success).error(error);
         };
+
+        function editUserProfile (userData, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseServiceUrl + 'user/profile',
+                headers: authService.getAuthHeaders(),
+                data: userData
+            };
+
+            $http(request)
+                .success(success)
+                .error(error);
+        };
 		
 		function createNewAd (adData, success, error) {
 			var request = {
@@ -54,6 +67,7 @@ app.factory('userService',
 
 		return {
 			getUserProfile: getUserProfile,
+			editUserProfile: editUserProfile,
 			createNewAd: createNewAd,
 			getUserAds: getUserAds,
 			deactivatedAd: deactivatedAd,
