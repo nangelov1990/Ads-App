@@ -27,6 +27,19 @@ app.controller('UserEditProfileController',
             );
 		};
 
+		$scope.editUserPassword = function (params) {
+			userService.editUserPassword(
+				params,
+				function success (data) {
+					notifyService.showInfo('Successfully changed password');
+					// $location.path('/user/edit-profile');
+				},
+				function error(err) {
+                    notifyService.showError("Password change failed", err);
+                }
+            );
+		};
+
 		$scope.loadUserProfile = function() {
 			userService.getUserProfile(
 	            function success(data) {

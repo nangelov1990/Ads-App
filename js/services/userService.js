@@ -26,6 +26,19 @@ app.factory('userService',
                 .error(error);
         };
 		
+        function editUserPassword (userData, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseServiceUrl + 'user/changePassword',
+                headers: authService.getAuthHeaders(),
+                data: userData
+            };
+
+            $http(request)
+                .success(success)
+                .error(error);
+        };
+
 		function createNewAd (adData, success, error) {
 			var request = {
 				method: 'POST',
@@ -68,6 +81,7 @@ app.factory('userService',
 		return {
 			getUserProfile: getUserProfile,
 			editUserProfile: editUserProfile,
+			editUserPassword: editUserPassword,
 			createNewAd: createNewAd,
 			getUserAds: getUserAds,
 			deactivatedAd: deactivatedAd,
