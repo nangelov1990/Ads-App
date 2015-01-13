@@ -51,6 +51,16 @@ app.controller('UserEditProfileController',
 	        );
        };
 
+       $scope.deactivatedAd = function() {
+			userService.deactivatedAd(
+	            function success(data) {
+	                $scope.userData = data;
+	            },
+	            function error(err) {
+	                notifyService.showError("Cannot load user info", err);
+	            }
+	        );
+       };
        $scope.loadUserProfile();
 	}
 );

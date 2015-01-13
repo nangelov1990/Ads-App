@@ -31,13 +31,12 @@ app.controller('UserHomeController',
 		});
 
        $rootScope.loadUserAds = function (adsStatus) {
-       	$rootScope.loc = 'MyAds';
-       	$rootScope.stat = adsStatus;
-       	console.log(adsStatus);
+	       	$rootScope.loc = 'MyAds';
+	       	$rootScope.stat = adsStatus;
 
-       	$scope.adsParams.status = adsStatus;
+	       	$scope.adsParams.status = adsStatus;
 
-       	userService.getUserAds($scope.adsParams,
+	       	userService.getUserAds($scope.adsParams,
 	            function success(data) {
 	            	$scope.ads = data;
 	            },
@@ -47,6 +46,54 @@ app.controller('UserHomeController',
 	        );
 	    };
 
-       $scope.loadUserAds(null);
+	    $scope.deleteAd = function (params) {
+	    	userService.deleteAd(params.id,
+	            function success(data) {
+					notifyService.showInfo('Successfully deleted ad');
+	            	$scope.loadUserAds(null);
+	            },
+	            function error(err) {
+	                notifyService.showError("Cannot delete ad", err);
+	            }
+	        );
+	    }
+
+	    $scope.publishedAgainAd = function (params) {
+	    	userService.publishedAgainAd(params.id,
+	            function success(data) {
+					notifyService.showInfo('Successfully republished ad');
+	            	$scope.loadUserAds(null);
+	            },
+	            function error(err) {
+	                notifyService.showError("Cannot republish ad", err);
+	            }
+	        );
+	    }
+
+	    $scope.deactivatedAd = function (params) {
+	    	userService.deactivatedAd(params.id,
+	            function success(data) {
+					notifyService.showInfo('Successfully deactivated ad');
+	            	$scope.loadUserAds(null);
+	            },
+	            function error(err) {
+	                notifyService.showError("Cannot deactivate ad", err);
+	            }
+	        );
+	    }
+
+	    $scope.editUserAd = function (params) {
+	    	userService.editUserAd(params,
+	            function success(data) {
+					notifyService.showInfo('Successfully deleted ad');
+	            	$scope.loadUserAds(null);
+	            },
+	            function error(err) {
+	                notifyService.showError("Cannot delete ad", err);
+	            }
+	        );
+	    }
+
+        $scope.loadUserAds(null);
 	}
 );

@@ -39,17 +39,6 @@ app.factory('userService',
                 .error(error);
         };
 
-		function createNewAd (adData, success, error) {
-			var request = {
-				method: 'POST',
-				url: baseServiceUrl + 'user/ads',
-				headers: authService.getAuthHeaders(),
-				data: adData
-			};
-
-			$http(request).success(success).error(error);
-		};
-
 		function getUserAds (params, success, error) {
 			var request = {
 				method: 'GET',
@@ -61,22 +50,57 @@ app.factory('userService',
 			$http(request).success(success).error(error);
 		};
 
-		function deleteAd (adId) {
+		function createNewAd (adData, success, error) {
+			var request = {
+				method: 'POST',
+				url: baseServiceUrl + 'user/ads',
+				headers: authService.getAuthHeaders(),
+				data: adData
+			};
+
+			$http(request).success(success).error(error);
+		};
+
+		function deleteAd (adId, success, error) {
 			var request = {
 				method: 'DELETE',
+				headers: authService.getAuthHeaders(),
 				url: baseServiceUrl + 'user/ads/' + adId
 			};
 
 			$http(request).success(success).error(error);
 		}
 
-		function deactivatedAd (argument) {
-			// body...
+		function deactivatedAd (adId, success, error) {
+			var request = {
+				method: 'PUT',
+				headers: authService.getAuthHeaders(),
+				url: baseServiceUrl + 'user/ads/deactivate/' + adId
+			};
+
+			$http(request).success(success).error(error);
 		};
 
-		function publishedAgainAd (argument) {
-			// body...
+		function publishedAgainAd (adId, success, error) {
+			var request = {
+				method: 'PUT',
+				headers: authService.getAuthHeaders(),
+				url: baseServiceUrl + 'user/ads/publishagain/' + adId
+			};
+
+			$http(request).success(success).error(error);
 		};
+
+		function editUserAd (adData, success, error) {
+			var request = {
+				method: 'PUT',
+				url: baseServiceUrl + 'user/ads/' + adData.id,
+				headers: authService.getAuthHeaders(),
+				data: adData
+			};
+
+			$http(request).success(success).error(error);
+		}
 
 		return {
 			getUserProfile: getUserProfile,
@@ -86,7 +110,8 @@ app.factory('userService',
 			getUserAds: getUserAds,
 			deactivatedAd: deactivatedAd,
 			publishedAgainAd: publishedAgainAd,
-			deleteAd: deleteAd
+			deleteAd: deleteAd,
+			editUserAd: editUserAd
 		}
 	}
 );
