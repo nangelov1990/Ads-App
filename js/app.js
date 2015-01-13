@@ -8,7 +8,7 @@
 * a few routes for the home, login and register screens.
 */
 
-var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'angular-loading-bar', 'ui.bootstrap.pagination']);
 
 app.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api/');
 app.constant('pageSize', 2);
