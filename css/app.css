@@ -205,3 +205,29 @@ ul.sidebar-menu li a, ul.sidebar-menu li a:focus {
     max-width: 150px;
     max-height: 150px;
 }
+
+.ad-box {
+    height: 50%;
+}
+
+#ad-heading {
+    display: inline-flex;
+    width: 100%;
+}
+
+.ad-date {
+    position: absolute;
+    right: 5%;
+}
+
+.ad-data {
+    width: 70%;
+}
+
+.ad-top-right {
+    width: 25%;
+}
+
+#my-ads {
+    border-left: thick solid #ff0000;
+}

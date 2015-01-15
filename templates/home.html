@@ -2,11 +2,13 @@
 
 <div class="ads" ng-show="!!ads.ads">
 	<ul>
-	    <li ng-repeat="ad in ads.ads" class="box">
+	    <li ng-repeat="ad in ads.ads" class="box ad-box">
+    		<div id="ad-heading"> <!--  class="ad-heading" -->
+    			<h1>{{ad.title}}</h1>
+	    		<span class="ad-date">Date: {{ad.date | date:'dd-MMM-yyyy'}}</span>
+    		</div>
 	    	<div class="flex-container">
-		    	<div>
-		    		<h1>{{ad.title}}</h1>
-			        <div><strong>Date:</strong> {{ad.date | date:'dd-MMM-yyyy'}}</div>
+		    	<div class="ad-data">
 			        <div>
 			        	<strong>Text: {{ ad.text }}</strong>
 			        </div>
@@ -21,25 +23,24 @@
 			        </div>
 		    	</div>
 		    	<div class="spacer"></div>
-		        <div class='ad-top-right'>
+		        <div class="ad-top-right">
 		        	<strong>Image:</strong>
 		        	<div>
 			            <img ng-if='ad.imageDataUrl' class="ad-image" ng-src="{{ad.imageDataUrl}}" />
 			            <img ng-if='!ad.imageDataUrl' class="ad-image" src="/img/no_image.jpg" />
 			        </div>
 		        </div>
-		        <div ng-if="loc == 'MyAds'">
+		        <div ng-if="loc == 'MyAds'">  <!-- id="my-ads" -->
 		        	<strong ng-if="loc == 'MyAds'">Status: {{ ad.status }}</strong>
 		        	<div class="spacer"></div>
 		        	<div ng-if="ad.status != 'Inactive'">
 		      			<button type="submit" class="btn btn-default" ng-click='deactivateAd(ad)'>Deactivate</button>
 		        	</div>
 		        	<div ng-if="ad.status == 'Inactive'">
-		        		<a href="#/user/ads/edit/{{ ad.id }}"><button type="submit" class="btn btn-primary">Edit</button></a>  <!-- ng-click='editUserAd(ad)' -->
-			      		<button type="submit" class="btn btn-primary" ng-click='publishAgainAd(ad)'>Publish Again</button>
-			      		<button type="submit" class="btn btn-default" ng-click='deleteAd(ad)'>Delete</button>
+		        		<div><a href="#/user/ads/edit/{{ ad.id }}"><button type="submit" class="btn btn-primary">Edit</button></a>  <!-- ng-click='editUserAd(ad)' --></div>
+		        		<div><button type="submit" class="btn btn-primary" ng-click='publishAgainAd(ad)'>Publish Again</button></div>
+		        		<div><button type="submit" class="btn btn-default" ng-click='deleteAd(ad)'>Delete</button></div>
 		        	</div>
-			      		
 	      		</div>
 	    	</div>
 	    </li>
