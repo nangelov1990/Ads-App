@@ -179,7 +179,7 @@ ul.sidebar-menu li a, ul.sidebar-menu li a:focus {
 }
 
 .image-box {
-    width: 150px;
+    min-width: 150px;
     height: 150px;
     display: inline-block;
     border: 1px solid rgba(100, 155, 63, 0.51);
@@ -196,7 +196,7 @@ ul.sidebar-menu li a, ul.sidebar-menu li a:focus {
 
 .image-box img, .image-box p {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 150px;
     display: inline-block;
     vertical-align: middle;
 }

@@ -1,0 +1,58 @@
+<div class="flex-container">
+	<div class="box container">
+		<form class="form-horizontal">
+		  <fieldset>
+		    <legend>Edit Ad</legend>
+
+			<div class="form-group">
+		      <label for="title" class="col-lg-2 control-label">Title</label>
+		      <div class="col-lg-8">
+		        <input type="text" class="form-control" value="ad.title" id="title" placeholder="Name" ng-model="ad.title" required>
+		      </div>
+		    </div>
+
+    		<div class="form-group">
+		      <label for="text" class="col-lg-2 control-label">Text</label>
+		      <div class="col-lg-8">
+		        <input type="textarea" class="form-control" value="ad.text" id="text" placeholder="Name" ng-model="ad.text" required>
+		      </div>
+		    </div>
+
+	        <div class="form-group">
+	            <label for="image" class="col-lg-2 control-label">Image</label>
+	            <div class="col-lg-8">
+	                <div class="image-box">
+	                	<img ng-show="ad.imageDataUrl" src="{{ ad.imageDataUrl }}">
+	                    <p ng-hide="ad.imageDataUrl">Image Preview</p>
+	                </div>
+	                <input type="file" id="image" accept="image/*" onchange="angular.element(this).scope().fileSelected(this)">
+	                <button type="submit" class="btn btn-primary" ng-click='deleteImg()'>Delete</button>
+	            </div>
+	        </div>
+
+		    <div class="form-group">
+		      <label for="adTown" class="col-lg-2 control-label">Town</label>
+		      <div class="col-lg-8">
+		    	  <select id="adTown" value="ad.townId" ng-options="town.id as town.name for town in towns" ng-model="ad.townId">
+		    	  </select>
+		      </div>
+		    </div>
+
+		    <div class="form-group">
+		      <label for="adCategory" class="col-lg-2 control-label">Town</label>
+		      <div class="col-lg-8">
+		    	  <select id="adTown" value="ad.categoryId" ng-options="category.id as category.name for category in categories" ng-model="ad.categoryId">
+		    	  </select>
+		      </div>
+		    </div>
+
+		    <div class="form-group">
+		      <div class="col-lg-8 col-lg-offset-2">
+		        <button type="submit" class="btn btn-primary" ng-click='editUserAd(ad)'>Edit</button>
+		      	<a href="#/"><button class="btn btn-default">Cancel</button></a>
+		      </div>
+		    </div>
+		  </fieldset>
+		</form>
+	</div>
+</div>

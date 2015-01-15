@@ -19,7 +19,7 @@ app.controller('UserEditProfileController',
 				params,
 				function success (data) {
 					notifyService.showInfo('Successfully edited user profile');
-					// $location.path('/user/edit-profile');
+					$scope.loadUserProfile();
 				},
 				function error(err) {
                     notifyService.showError("Cannot edit user profile", err);
@@ -32,7 +32,7 @@ app.controller('UserEditProfileController',
 				params,
 				function success (data) {
 					notifyService.showInfo('Successfully changed password');
-					// $location.path('/user/edit-profile');
+					$scope.loadUserProfile();
 				},
 				function error(err) {
                     notifyService.showError("Password change failed", err);
@@ -51,16 +51,17 @@ app.controller('UserEditProfileController',
 	        );
        };
 
-       $scope.deactivatedAd = function() {
-			userService.deactivatedAd(
-	            function success(data) {
-	                $scope.userData = data;
-	            },
-	            function error(err) {
-	                notifyService.showError("Cannot load user info", err);
-	            }
-	        );
-       };
+   //     $scope.deactivateAd = function() {
+			// userService.deactivateAd(
+	  //           function success(data) {
+	  //               $scope.userData = data;
+	  //           },
+	  //           function error(err) {
+	  //               notifyService.showError("Cannot load user info", err);
+	  //           }
+	  //       );
+   //     };
+
        $scope.loadUserProfile();
 	}
 );

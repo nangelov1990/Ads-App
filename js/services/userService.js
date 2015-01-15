@@ -71,7 +71,7 @@ app.factory('userService',
 			$http(request).success(success).error(error);
 		}
 
-		function deactivatedAd (adId, success, error) {
+		function deactivateAd (adId, success, error) {
 			var request = {
 				method: 'PUT',
 				headers: authService.getAuthHeaders(),
@@ -81,7 +81,7 @@ app.factory('userService',
 			$http(request).success(success).error(error);
 		};
 
-		function publishedAgainAd (adId, success, error) {
+		function publishAgainAd (adId, success, error) {
 			var request = {
 				method: 'PUT',
 				headers: authService.getAuthHeaders(),
@@ -90,6 +90,16 @@ app.factory('userService',
 
 			$http(request).success(success).error(error);
 		};
+
+		function loadUserAd (adId, success, error) {
+			var request = {
+				method: 'GET',
+				url: baseServiceUrl + 'user/ads/' + adId,
+				headers: authService.getAuthHeaders()
+			};
+
+			$http(request).success(success).error(error);
+		}
 
 		function editUserAd (adData, success, error) {
 			var request = {
@@ -108,10 +118,11 @@ app.factory('userService',
 			editUserPassword: editUserPassword,
 			createNewAd: createNewAd,
 			getUserAds: getUserAds,
-			deactivatedAd: deactivatedAd,
-			publishedAgainAd: publishedAgainAd,
+			deactivateAd: deactivateAd,
+			publishAgainAd: publishAgainAd,
 			deleteAd: deleteAd,
-			editUserAd: editUserAd
+			editUserAd: editUserAd,
+			loadUserAd:loadUserAd
 		}
 	}
 );

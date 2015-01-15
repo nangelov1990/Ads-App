@@ -8,7 +8,7 @@
 * a few routes for the home, login and register screens.
 */
 
-var app = angular.module('app', ['ngRoute', 'ngResource', 'angular-loading-bar', 'ui.bootstrap.pagination']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination']);
 
 app.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api/');
 app.constant('pageSize', 2);
@@ -43,6 +43,11 @@ app.config(function ($routeProvider) {
 	$routeProvider.when('/user/profile/edit', {
 		templateUrl: 'templates/user/profile/edit-profile.html',
 		controller: 'UserEditProfileController'
+	});
+
+	$routeProvider.when('/user/ads/edit/:id', {
+		templateUrl: 'templates/user/ads/edit-ad.html',
+		controller: 'UserEditAdController'
 	});
 
 	$routeProvider.otherwise(
